@@ -1,0 +1,139 @@
+.emoji-canvas__container {
+    padding: 20px;
+
+}
+
+.emoji-grid {
+    border: 1px solid #a0a0a2;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 400px;
+    height: 250px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.emoji-grid__container {
+    padding: 20px 0px 20px 40px;
+    margin-top: -25px;
+}
+
+.emoji-grid__row {
+    width: 100%;
+}
+
+.emoji-grid__row ul {
+    display: flex;
+    width: 100%;
+}
+
+.emoji-grid__tile {
+    border: 1px solid #d5d5d6;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 12px;
+
+    &:hover {
+        background: #f5f5f5;
+    }
+
+    &::selection {
+        background-color: #fff;
+    }
+}
+
+// user meta
+.emoji-user {
+    position: relative;
+}
+
+.emoji-user__meta {
+    display: inline-block;
+    position: absolute;
+}
+
+.emoji-user__thumb {
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.emoji-user__name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c2d30;
+    margin-right: 5px
+}
+
+.emoji-user__time {
+    font-size: 12px;
+    font-weight: 100;
+    color: #a3a3ab;
+}
+
+.emoji-user__message {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    font-style: italic;
+    color: #2ab27a;
+}
+
+// footer 
+.emoji-actions {
+    text-align: right;
+}
+
+.emoji-btn {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out;
+}
+
+.emoji-btn.primary {
+    color: #fff;
+    background-color: #33b17c;
+    border-color: #33b17c;
+
+    &:hover {
+        color: #fff;
+        background-color: #2b9367;
+        border-color: #2b9367;
+    }
+}
+
+.emoji-btn.secondary {
+    color: #2c2d30;
+    background-color: transparent;
+    background-image: none;
+    border-color: #bfc0c0;
+
+    &:hover {
+        color: #fff;
+        background-color: #2c2d30;
+        border-color: #2c2d30;
+    }
+}
