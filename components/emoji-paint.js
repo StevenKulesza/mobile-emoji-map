@@ -8,7 +8,7 @@ import './emoji-paint.css';
 const DEFAULT_HEIGHT = 8;
 const DEFAULT_WIDTH = 10;
 
-export default class App extends Component {
+export default class EmojiPaint extends Component {
 
 	constructor(props) {
 		super(props);
