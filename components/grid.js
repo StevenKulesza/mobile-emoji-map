@@ -21,19 +21,23 @@ export default class Grid extends Component {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
         grid: [
-            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]], 
-            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]], 
-            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]],
+            [['😀'], ['😀'], ['😀'], ['😀']], 
+            [['😀'], ['😀'], ['😀'], ['😀']], 
+            [['😀'], ['😀'], ['😀'], ['😀']],
         ],
       text: 'hello world',
-      message: 'painting'
+      message: 'painting',
+      action:'brush'
     }
   }
 
-  boardClickHandler(rowIdx, tileIdx) {
-      rowIdx = 1; 
-      tileIdx = 1;
+  componentWillMount(){
+      this.setState(() => ({
+          grid: makeArray(this.state.width, this.state.height, '😀')
+      }));
+  }
 
+  boardClickHandler(rowIdx, tileIdx) {
       this.setState(() => {
           let update = [...this.state.grid];
           let message = '';
@@ -72,7 +76,7 @@ export default class Grid extends Component {
 		this.state.grid.map(arr => {
 			arr.map(obj => {
 				if (obj === null) return text += ':blank:';
-				else return text += obj[0].emoji;
+				else return text += obj;
 			})
 			return text += '\r\n';
         });
@@ -81,46 +85,37 @@ export default class Grid extends Component {
 	}
 
   render() {
+
+    const rows = this.state.grid.map((row, rowIdx) =>
+        <View key={rowIdx} style={{flex: 1, flexDirection: 'row'}}>
+            {row.map((tile, tileIdx) => 
+                <TouchableWithoutFeedback  
+                    onPress={() => this.boardClickHandler(rowIdx, tileIdx)} 
+                    style={{
+                        borderColor: '1px solid #d5d5d6',
+                        borderWidth: 1,
+                         display: 'flex',
+                        flexDirection: 'column',
+                        flexGrow: '1',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: (this.state.width >= 20 || this.state.height >= 20) ? '7.5px': '12px'
+                    }}
+                    key={tileIdx}>
+                    <Text>{tile ? tile : null}</Text>
+                </TouchableWithoutFeedback>
+            )}
+        </View>
+    );
+
     return (
       <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={e => this.boardClickHandler(e)}>
-          <View style={styles.board}>
-            <View
-              style={styles.line}
-            />
-            <View
-              style={[styles.line, {
-                width: 3,
-                height: 306,
-                transform: [
-                  {translateX: 200}
-                ]
-              }]}
-            />
-            <View
-              style={[styles.line, {
-                width: 306,
-                height: 3,
-                transform: [
-                  {translateY: 100}
-                ]
-              }]}
-            />
-            <View
-              style={[styles.line, {
-                width: 306,
-                height: 3,
-                transform: [
-                  {translateY: 200}
-                ]
-              }]}
-            />
-          </View>
-        </TouchableWithoutFeedback>
+        
+        {rows}
 
 
-        <Button onPress={this.clearGrid} title={'Clear Grid'}/>
-        <Button onPress={this.copyGrid} title={'Copy Emojis'}/>
+        <Button     onPress={this.clearGrid}    title={'Clear Grid'}/>
+        <Button     onPress={this.copyGrid}     title={'Copy Emojis'}/>
 
 
         <Text>Height: </Text>
