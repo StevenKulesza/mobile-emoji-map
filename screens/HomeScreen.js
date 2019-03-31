@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
+import Grid from '../components/grid'
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -44,13 +46,16 @@ export default class HomeScreen extends React.Component {
               <EmojiSelector onEmojiSelected={emoji => this.setState({activeEmoji:emoji})}/> : 
               null
             }
+            <Grid 
+              activeEmoji={this.state.activeEmoji}
+            />
           </View>
         </ScrollView>
       </View>
     );
   }
 
-  _maybeRenderDevelopmentModeWarning() {
+  q() {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>

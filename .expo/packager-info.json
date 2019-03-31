@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 12553,
+  "expoServerNgrokUrl": "https://vd-gys.anonymous.emoji-paint.exp.direct",
+  "packagerNgrokUrl": "https://packager.vd-gys.anonymous.emoji-paint.exp.direct",
+  "ngrokPid": 12592,
   "webpackServerPort": null
 }
