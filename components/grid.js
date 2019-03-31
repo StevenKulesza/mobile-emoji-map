@@ -21,9 +21,9 @@ export default class Grid extends Component {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
         grid: [
-            [[], [], [], []], 
-            [[], [], [], []], 
-            [[], [], [], []],
+            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]], 
+            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]], 
+            [[{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }], [{ 'emoji': '😀' }]],
         ],
       text: 'hello world',
       message: 'painting'
@@ -70,15 +70,14 @@ export default class Grid extends Component {
     copyGrid = async () => {
 		let text = ''
 		this.state.grid.map(arr => {
-			arr.map(emoji => {
-				if (emoji === null) return text += ':blank:';
-				else return text += emoji.shortcode;
+			arr.map(obj => {
+				if (obj === null) return text += ':blank:';
+				else return text += obj[0].emoji;
 			})
 			return text += '\r\n';
-		});
-
+        });
         await Clipboard.setString(text);
-        alert('Copied to Clipboard!');
+        alert(text);
 	}
 
   render() {
