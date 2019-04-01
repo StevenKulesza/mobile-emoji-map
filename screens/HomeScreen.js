@@ -34,7 +34,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} contentContainerStyle={styles.contentContainer}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.emojiPickerContainer}>
             <Button 
@@ -43,7 +43,10 @@ export default class HomeScreen extends React.Component {
             />
             {
               this.state.isEmojiSelectorOpen && this.state.isEmojiSelectorOpen ?
-              <EmojiSelector onEmojiSelected={emoji => this.setState({activeEmoji:emoji})}/> : 
+              <EmojiSelector onEmojiSelected={emoji => this.setState({
+                activeEmoji:emoji,
+                isEmojiSelectorOpen: !this.state.isEmojiSelectorOpen
+              })}/> : 
               null
             }
             <Grid 
